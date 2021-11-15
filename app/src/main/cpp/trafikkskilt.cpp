@@ -17,8 +17,12 @@
 //    }
 
 #include <iostream>
+#include <jni.h>
 
-int main() {
-    std::cout << "Hello World Hoe!";
-    return 0;
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_example_trafikkskilt_MainActivity_stringFromJNI(
+        JNIEnv* env,
+        jobject /* this */) {
+    std::string hello = "Hello from C++";
+    return env->NewStringUTF(hello.c_str());
 }
