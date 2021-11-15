@@ -1,21 +1,21 @@
 package com.example.trafikkskilt
 
-import android.content.ContentValues.TAG
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import org.opencv.android.OpenCVLoader
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 
-class MainActivity : AppCompatActivity() {
-
-    companion object {
-        init {
-            System.loadLibrary("trafikkskilt")
-        }
-    }
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        OpenCVLoader.initDebug()
+        setContent {
+            MessageCard("Android")
+        }
     }
+}
+
+@Composable
+fun MessageCard(name: String) {
+    Text(text = "Hello $name!")
 }
