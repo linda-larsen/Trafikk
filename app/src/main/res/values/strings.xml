@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Trafikkskilt</string>
-    <string name="start_drive">Start kjøretur</string>
     <string name="start_drive_button"> Start kjøretur</string>
+    <string name="start_drive_content_desription">Klikk for å starte kjøretur</string>
+    <string name="welcome"> Velkommen</string>
 
 </resources>
