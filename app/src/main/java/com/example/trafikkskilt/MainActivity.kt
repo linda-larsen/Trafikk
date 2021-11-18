@@ -4,15 +4,21 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import com.example.trafikkskilt.models.StartView
 
 class MainActivity : ComponentActivity() {
+    private val startViewActivity by viewModels<StartView>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i("hore", stringFromJNI().toString())
         setContent {
-            MessageCard("Android")
+            Column {
+                MessageCard("Android")
+                startViewActivity.startView()            }
         }
     }
 
