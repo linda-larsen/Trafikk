@@ -7,12 +7,20 @@ import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.AlertDialog
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import com.example.trafikkskilt.constants.PaddingSize
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.PermissionRequired
+import com.google.accompanist.permissions.rememberPermissionState
 import kotlinx.coroutines.launch
 import java.util.concurrent.Executor
 import kotlin.coroutines.resume
@@ -38,7 +46,7 @@ fun CameraPreview(
     val coroutineScope = rememberCoroutineScope()
     val lifecycleOwner = LocalLifecycleOwner.current
     AndroidView(
-        modifier = modifier,
+        modifier = modifier.padding(PaddingSize*10),
         factory = { context ->
             val previewView = PreviewView(context).apply {
                 this.scaleType = scaleType
