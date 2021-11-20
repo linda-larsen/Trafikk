@@ -1,18 +1,34 @@
 package com.example.trafikkskilt.models
 
+import android.content.Context
 import android.util.Log
 import android.view.ViewGroup
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
+import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.content.ContextCompat
 import kotlinx.coroutines.launch
+import java.util.concurrent.Executor
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
-//TODO: FIX this
+ suspend fun Context.getCameraProvider(): ProcessCameraProvider = suspendCoroutine { continuation ->
+    ProcessCameraProvider.getInstance(this).also { future ->
+        future.addListener({
+            continuation.resume(future.get())
+        }, executor)
+    }
+}
+
+val Context.executor: Executor
+    get() = ContextCompat.getMainExecutor(this)
+
 @Composable
 fun CameraPreview(
     modifier: Modifier = Modifier,
@@ -40,7 +56,7 @@ fun CameraPreview(
                 }
 
             coroutineScope.launch {
-                /*val cameraProvider = context.getCameraProvider()
+                val cameraProvider = context.getCameraProvider()
                 try {
                     // Must unbind the use-cases before rebinding them.
                     cameraProvider.unbindAll()
@@ -51,7 +67,7 @@ fun CameraPreview(
                 } catch (ex: Exception) {
                     Log.e("CameraPreview", "Use case binding failed", ex)
                 }
-            */}
+            }
 
             previewView
         }
