@@ -5,11 +5,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -18,7 +16,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import com.example.trafikkskilt.R
-import com.example.trafikkskilt.constants.PaddingSize
+import com.example.trafikkskilt.constants.paddingSize
 import com.example.trafikkskilt.constants.headerHeigth
 import com.example.trafikkskilt.constants.headerTextSize
 import androidx.compose.material.Icon
@@ -44,7 +42,7 @@ fun HeaderComponent() {
             Logo()
             Text(
                 text = stringResource(id = R.string.app_name),
-                modifier = Modifier.padding(PaddingSize*2),
+                modifier = Modifier.padding(paddingSize*2),
                 fontFamily = FontFamily.Serif, //TODO: Make font Roboto
                 fontSize = headerTextSize,
 
@@ -57,7 +55,7 @@ fun HeaderComponent() {
 @Composable
 fun Logo() {
     Card(
-        modifier = Modifier.size(48.dp).padding(PaddingSize*2),
+        modifier = Modifier.size(48.dp).padding(paddingSize*2),
         shape = CircleShape,
         elevation = 2.dp,
     ) {

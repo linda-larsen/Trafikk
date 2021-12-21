@@ -8,8 +8,8 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
-import com.example.trafikkskilt.cameraComponents.CameraCapture
 import com.example.trafikkskilt.components.HeaderComponent
+import com.example.trafikkskilt.models.ConfigCameraView
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
 class MainActivity : ComponentActivity() {
@@ -44,8 +44,8 @@ fun Main() {
             HeaderComponent()
         }
     }
-        CameraCapture()
-    //StartView()
+        ConfigCameraView()
+        //StartView()
     }
 
 

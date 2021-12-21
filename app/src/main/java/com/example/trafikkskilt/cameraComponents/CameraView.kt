@@ -6,8 +6,6 @@ import android.net.Uri
 import android.provider.Settings
 import android.util.Log
 import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
 import androidx.camera.core.Preview
 import androidx.camera.core.UseCase
 import androidx.compose.foundation.layout.Box
@@ -37,7 +35,6 @@ import java.io.File
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
-//TODO: Remove button
 //TODO: Make "config" layout
 //TODO: Make info about config appear above
 //TODO: Make next button
@@ -45,15 +42,15 @@ import kotlinx.coroutines.launch
 @ExperimentalPermissionsApi
 @ExperimentalCoroutinesApi
 @Composable
-fun CameraCapture(
+fun CameraView(
     modifier: Modifier = Modifier,
     cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA,
-    onImageFile: (File) -> Unit = { }
+    //onImageFile: (File) -> Unit = { }
 ) {
     val context = LocalContext.current
     Permission(
         permission = Manifest.permission.CAMERA,
-        rationale = "You said you wanted a picture, so I'm going to have to ask for permission.",
+        rationale = "You said you wanted to use camera, so I'm going to have to ask for permission.",
         permissionNotAvailableContent = {
             Column(modifier) {
                 Text("O noes! No Camera!")
@@ -74,33 +71,13 @@ fun CameraCapture(
     ) {
         Box(modifier = modifier) {
             val lifecycleOwner = LocalLifecycleOwner.current
-            val coroutineScope = rememberCoroutineScope()
+            //val coroutineScope = rememberCoroutineScope()
             var previewUseCase by remember { mutableStateOf<UseCase>(Preview.Builder().build()) }
-            val imageCaptureUseCase by remember {
-                mutableStateOf(
-                    ImageCapture.Builder()
-                        .setCaptureMode(CAPTURE_MODE_MAXIMIZE_QUALITY)
-                        .build()
-                )
-            }
             Box {
                 CameraPreview(
                     modifier = Modifier.fillMaxSize(),
                     onUseCase = {
                         previewUseCase = it
-                    }
-                )
-                CapturePictureButton(
-                    modifier = Modifier
-                        .size(100.dp)
-                        .padding(16.dp)
-                        .align(Alignment.BottomCenter),
-                    onClick = {
-                        coroutineScope.launch {
-                            imageCaptureUseCase.takePicture(context.executor).let {
-                                onImageFile(it)
-                            }
-                        }
                     }
                 )
             }
@@ -110,10 +87,10 @@ fun CameraCapture(
                     // Must unbind the use-cases before rebinding them.
                     cameraProvider.unbindAll()
                     cameraProvider.bindToLifecycle(
-                        lifecycleOwner, cameraSelector, previewUseCase, imageCaptureUseCase
+                        lifecycleOwner, cameraSelector, previewUseCase
                     )
                 } catch (ex: Exception) {
-                    Log.e("CameraCapture", "Failed to bind camera use cases", ex)
+                    Log.e("CameraView", "Failed to bind camera use cases", ex)
                 }
             }
         }
