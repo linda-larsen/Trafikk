@@ -6,7 +6,10 @@
 
 cmake_minimum_required(VERSION 3.10.2)
 
-# Declares and names the project.
+#opencv
+include_directories(${OpenCV_DIR}/jni/include)
+add_library( lib_opencv SHARED IMPORTED )
+set_target_properties(lib_opencv PROPERTIES IMPORTED_LOCATION ${OpenCV_DIR}/libs/${ANDROID_ABI}/libopencv_java4.so)
 
 project("trafikkskilt")
 
@@ -22,7 +25,8 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             trafikkskilt.cpp )
+             trafikkskilt.cpp
+             openCVtest.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -41,9 +45,17 @@ find_library( # Sets the name of the path variable.
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
-target_link_libraries( # Specifies the target library.
-                       trafikkskilt
+find_library(jnigraphics-lib jnigraphics)
 
-                       # Links the target library to the log library
-                       # included in the NDK.
-                       ${log-lib} )
+# Specifies libraries CMake should link to your target library. You
+# can link multiple libraries, such as libraries you define in this
+# build script, prebuilt third-party libraries, or system libraries.
+
+target_link_libraries( # Specifies the target library.
+        trafikkskilt
+
+        # Links the target library to the log library
+        # included in the NDK.
+        ${lib_opencv}
+        ${jnigraphics-lib}
+        ${log-lib})
