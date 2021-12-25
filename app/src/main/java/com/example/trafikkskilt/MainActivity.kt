@@ -10,12 +10,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import com.example.trafikkskilt.components.Header
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.StartView
+import com.example.trafikkskilt.models.TestView
 
 class MainActivity : ComponentActivity() {
-
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,13 +40,22 @@ class MainActivity : ComponentActivity() {
 @ExperimentalFoundationApi
 @Composable
 fun Main() {
+    val navController = rememberNavController()
+
     Column() {
     LazyColumn(){
         stickyHeader {
-            HeaderComponent()
+            HeaderComponent(navController)
         }
     }
-        StartView()
+        NavHost(navController = navController, startDestination = "startView"){
+            composable(route = "startView"){
+                StartView() //TODO: Navcontroller her probs
+            }
+            composable(route = "test"){
+                TestView()
+            }
+        }
     }
 
 
