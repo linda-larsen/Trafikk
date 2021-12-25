@@ -9,9 +9,8 @@ cmake_minimum_required(VERSION 3.10.2)
 #opencv
 include_directories(${OpenCV_DIR}/jni/include)
 add_library( lib_opencv SHARED IMPORTED )
-set_target_properties(lib_opencv PROPERTIES IMPORTED_LOCATION ${OpenCV_DIR}/libs/${ANDROID_ABI}/libopencv_java4.so)
-
-project("trafikkskilt")
+set_target_properties(lib_opencv PROPERTIES IMPORTED_LOCATION sdk/${OpenCV_DIR}/libs/${ANDROID_ABI}/libopencv_java4.so)
+find_package(OpenCV REQUIRED)
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -19,7 +18,7 @@ project("trafikkskilt")
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-             trafikkskilt
+             native-lib
 
              # Sets the library as a shared library.
              SHARED
@@ -51,11 +50,13 @@ find_library(jnigraphics-lib jnigraphics)
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
+
 target_link_libraries( # Specifies the target library.
-        trafikkskilt
+        native-lib
 
         # Links the target library to the log library
         # included in the NDK.
         ${lib_opencv}
         ${jnigraphics-lib}
-        ${log-lib})
+        ${log-lib}
+        ${OpenCV_LIBRARIES})

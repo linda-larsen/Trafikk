@@ -15,11 +15,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.StartView
+import org.opencv.android.OpenCVLoader
 import com.example.trafikkskilt.models.TestView
+
 
 class MainActivity : ComponentActivity() {
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
+        OpenCVLoader.initDebug()
         super.onCreate(savedInstanceState)
         Log.i("hore", stringFromJNI().toString())
         setContent {
