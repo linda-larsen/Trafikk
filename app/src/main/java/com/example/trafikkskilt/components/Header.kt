@@ -2,7 +2,6 @@ package com.example.trafikkskilt.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -16,7 +15,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import com.example.trafikkskilt.R
 import com.example.trafikkskilt.constants.PaddingSize
 import com.example.trafikkskilt.constants.headerHeigth
@@ -25,12 +23,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.icons.filled.Menu
 import androidx.navigation.NavController
 import com.example.trafikkskilt.constants.menuSize
-
-
-class Header:ViewModel() {
-//TODO: Style text
-
-}
 
 @Composable
 fun HeaderComponent(navController: NavController) {
@@ -47,19 +39,22 @@ fun HeaderComponent(navController: NavController) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+            // The trafikkskiltlogo, viewd to the left
             Logo()
+
+            //The title, centerd
             Text(
                 text = stringResource(id = R.string.app_name),
                 modifier = Modifier.padding(PaddingSize*2),
-                fontFamily = FontFamily.Serif, //TODO: Make font Roboto
+                fontFamily = FontFamily.Serif,
                 fontSize = headerTextSize,
-
             )
-            //TODO: Clean up code here
+
+            //The hamburger menu with dropdown menu
             HamburgerDropDownMenu(
-                items,
-                expanded,
-                selectedIndex,
+                menuItems = items,
+                menuExpandedState = expanded,
+                seletedIndex = selectedIndex,
                 updateMenuExpandStatus = {
                     expanded = true
                 },
@@ -103,8 +98,6 @@ fun HamburgerMenuButton(updateMenuExpandStatus : () -> Unit){
     }
 }
 
-
-//TODO: Make clicks on menu items take you the desired route
 @Composable
 fun HamburgerDropDownMenu(
     menuItems: List<String>,
@@ -131,7 +124,10 @@ fun HamburgerDropDownMenu(
                 onClick = {
                     onMenuItemclick(index)
                     if(seletedIndex == 0){
-                        navController.navigate("test")
+                        navController.navigate("startView")
+                    } else {
+                        navController.navigate("test") //TODO: Route to calibrateView her
+                       // navController.navigate("calibrate")
                     }
                 }) {
                 Text(text = title)
