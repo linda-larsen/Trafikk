@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModel
 import com.example.trafikkskilt.R
 
 class StartView : ViewModel() {
-
     @Composable
     fun startView() {
         Surface(
