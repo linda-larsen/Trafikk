@@ -39,10 +39,10 @@ fun HeaderComponent(navController: NavController) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            // The trafikkskiltlogo, viewd to the left
+            // The logo, viewed to the left
             Logo()
 
-            //The title, centerd
+            //The title, centered
             Text(
                 text = stringResource(id = R.string.app_name),
                 modifier = Modifier.padding(PaddingSize*2),
@@ -54,14 +54,14 @@ fun HeaderComponent(navController: NavController) {
             HamburgerDropDownMenu(
                 menuItems = items,
                 menuExpandedState = expanded,
-                seletedIndex = selectedIndex,
+                selectedIndex = selectedIndex,
                 updateMenuExpandStatus = {
                     expanded = true
                 },
                 onDismissMenuView = {
                     expanded = false
                 },
-                onMenuItemclick = { index->
+                onMenuItemClick = { index->
                     selectedIndex = index
                     expanded = false
                 },
@@ -102,10 +102,10 @@ fun HamburgerMenuButton(updateMenuExpandStatus : () -> Unit){
 fun HamburgerDropDownMenu(
     menuItems: List<String>,
     menuExpandedState: Boolean,
-    seletedIndex : Int,
+    selectedIndex : Int,
     updateMenuExpandStatus : () -> Unit,
     onDismissMenuView : () -> Unit,
-    onMenuItemclick : (Int) -> Unit,
+    onMenuItemClick : (Int) -> Unit,
     navController: NavController
 ){
     //The hamburger menu
@@ -122,8 +122,8 @@ fun HamburgerDropDownMenu(
         menuItems.forEachIndexed { index, title ->
             DropdownMenuItem(
                 onClick = {
-                    onMenuItemclick(index)
-                    if(seletedIndex == 0){
+                    onMenuItemClick(index)
+                    if(selectedIndex == 0){
                         navController.navigate("startView")
                     } else {
                         navController.navigate("test") //TODO: Route to calibrateView her
