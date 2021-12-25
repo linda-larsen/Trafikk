@@ -28,7 +28,6 @@ import com.example.trafikkskilt.constants.menuSize
 fun HeaderComponent(navController: NavController) {
     var expanded by remember { mutableStateOf(false) }
     val items = listOf("Start drive", "Calibrate camera")
-    var selectedIndex by remember { mutableStateOf(0) }
 
 
     Surface(
@@ -54,15 +53,13 @@ fun HeaderComponent(navController: NavController) {
             HamburgerDropDownMenu(
                 menuItems = items,
                 menuExpandedState = expanded,
-                selectedIndex = selectedIndex,
                 updateMenuExpandStatus = {
                     expanded = true
                 },
                 onDismissMenuView = {
                     expanded = false
                 },
-                onMenuItemClick = { index->
-                    selectedIndex = index
+                onMenuItemClick = {
                     expanded = false
                 },
                 navController
@@ -102,7 +99,6 @@ fun HamburgerMenuButton(updateMenuExpandStatus : () -> Unit){
 fun HamburgerDropDownMenu(
     menuItems: List<String>,
     menuExpandedState: Boolean,
-    selectedIndex : Int,
     updateMenuExpandStatus : () -> Unit,
     onDismissMenuView : () -> Unit,
     onMenuItemClick : (Int) -> Unit,
@@ -122,8 +118,8 @@ fun HamburgerDropDownMenu(
         menuItems.forEachIndexed { index, title ->
             DropdownMenuItem(
                 onClick = {
-                    onMenuItemClick(index)
-                    if(selectedIndex == 0){
+                   onMenuItemClick(index)
+                    if(index == 0){
                         navController.navigate("startView")
                     } else {
                         navController.navigate("test") //TODO: Route to calibrateView her

@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.trafikkskilt.components.Header
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.StartView
 import com.example.trafikkskilt.models.TestView
