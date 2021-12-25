@@ -1,0 +1,8 @@
+//
+// Created by Linda on 12/25/2021.
+//
+
+#ifndef TRAFIKKSKILT_OPENCV_UTILS_H
+#define TRAFIKKSKILT_OPENCV_UTILS_H
+
+#endif //TRAFIKKSKILT_OPENCV_UTILS_H
