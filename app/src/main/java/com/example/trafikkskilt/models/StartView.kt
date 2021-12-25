@@ -10,14 +10,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import com.example.trafikkskilt.R
 
-class StartView : ViewModel() {
+
     @Composable
-    fun startView() {
+    fun StartView() {
         Surface(
             shape = MaterialTheme.shapes.medium,
             elevation = 2.dp,
@@ -42,14 +42,14 @@ class StartView : ViewModel() {
                         .padding(30.dp)
                         .fillMaxWidth()
                         .fillMaxHeight()
-                        .weight(1f),
+                        .weight(1.5f),
                     shape = RoundedCornerShape(10.dp),
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Icon(
-                            Icons.Filled.Star, //TODO: Make this a car
+                            painter = painterResource(R.drawable.car3),
                             contentDescription = stringResource(id = R.string.app_intro_image_content_description),
                             tint = colorResource(id = R.color.black),
                             modifier = Modifier.size(100.dp)
@@ -70,5 +70,3 @@ class StartView : ViewModel() {
             }
         }
     }
-
-}
