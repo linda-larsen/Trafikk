@@ -25,20 +25,9 @@ class MainActivity : ComponentActivity() {
     @ExperimentalPermissionsApi
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
-        OpenCVLoader.initDebug()
         super.onCreate(savedInstanceState)
-        Log.i("hore", stringFromJNI().toString())
         setContent {
-
             Main()
-        }
-    }
-
-    external fun stringFromJNI(): String
-
-    companion object {
-        init {
-            System.loadLibrary("trafikkskilt");
         }
     }
 }

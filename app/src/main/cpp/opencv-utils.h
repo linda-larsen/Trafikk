@@ -1,8 +1,8 @@
-//
-// Created by Linda on 12/25/2021.
-//
+#pragma once
 
-#ifndef TRAFIKKSKILT_OPENCV_UTILS_H
-#define TRAFIKKSKILT_OPENCV_UTILS_H
+#include <opencv2/core.hpp>
 
-#endif //TRAFIKKSKILT_OPENCV_UTILS_H
+using namespace cv;
+
+void myFlip(Mat src);
+void myBlur(Mat src, float sigma);
