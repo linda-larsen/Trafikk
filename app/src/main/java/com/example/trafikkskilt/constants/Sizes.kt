@@ -14,5 +14,13 @@ val menuSize = 60.dp
 
 
 //Text constants
-val textHeadlineSize = 30.sp
-val textSize = 10.sp
+
+/**
+ * The headline text. 20.sp
+ */
+val textHeadlineSize = 20.sp
+
+/**
+ * Standard size of text. 15.sp
+ */
+val textSize = 15.sp
