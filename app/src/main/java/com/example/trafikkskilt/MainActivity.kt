@@ -13,11 +13,13 @@ import androidx.compose.runtime.Composable
 import com.example.trafikkskilt.components.Header
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.StartView
+import org.opencv.android.OpenCVLoader
 
 class MainActivity : ComponentActivity() {
 
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
+        OpenCVLoader.initDebug()
         super.onCreate(savedInstanceState)
         Log.i("hore", stringFromJNI().toString())
         setContent {
