@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.NavController
 import com.example.trafikkskilt.R
 import com.example.trafikkskilt.cameraComponents.CameraView
 import com.example.trafikkskilt.constants.paddingSize
@@ -24,7 +25,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @ExperimentalPermissionsApi
 @Composable
-fun ConfigCameraView(/*navController: NavController*/){ //TODO: Implement navcontroller
+fun ConfigCameraView(navController: NavController){
     Surface {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -46,7 +47,7 @@ fun ConfigCameraView(/*navController: NavController*/){ //TODO: Implement navcon
             )
             Button(
                 onClick = {
-                    //navController.navigate("startView") //TODO: uncomment
+                    navController.navigate("startView")
                 },
             ) {
                 Text(text = stringResource(id = R.string.config_camera_done_button))
