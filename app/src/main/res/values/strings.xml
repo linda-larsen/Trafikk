@@ -1,7 +1,18 @@
 <resources>
     <string name="app_name">Trafikkskilt</string>
-    <string name="start_drive_button"> Start kjøretur</string>
-    <string name="start_drive_content_desription">Klikk for å starte kjøretur</string>
+
+
     <string name="welcome"> Velkommen</string>
 
+    <string name="start_drive_button"> Start kjøretur</string>
+    <string name="start_drive_content_desription">Klikk for å starte kjøretur</string>
+
+    <string name="config_camera_headtitle">Konfigurer kameraet</string>
+    <string name="config_camera_description">
+         Sørg for at kameraet fanger veiskulderen, \nslik at det kan fange opp skilter.
+        \nSett telefonen stabilt. \nIkke konfigurer kameraet mens du kjører.
+    </string>
+    <string name="config_camera_done_button">Ferdig!</string>
+    <string name="camera_permission">Applikasjonen må ha tilltatelse for å bruke kameraet</string>
+    <string name="camera_permission_denied">Du avslo tilalelse til å bruke kameraet. Da får vi ikke konfigurert</string>
 </resources>

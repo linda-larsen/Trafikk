@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.example.trafikkskilt.R
-import com.example.trafikkskilt.constants.PaddingSize
+import com.example.trafikkskilt.constants.paddingSize
 import com.example.trafikkskilt.constants.headerHeigth
 import com.example.trafikkskilt.constants.headerTextSize
 import androidx.compose.material.Icon
@@ -44,7 +44,7 @@ fun HeaderComponent(navController: NavController) {
             //The title, centered
             Text(
                 text = stringResource(id = R.string.app_name),
-                modifier = Modifier.padding(PaddingSize*2),
+                modifier = Modifier.padding(paddingSize*2),
                 fontFamily = FontFamily.Serif,
                 fontSize = headerTextSize,
             )
@@ -71,7 +71,7 @@ fun HeaderComponent(navController: NavController) {
 @Composable
 fun Logo() {
     Card(
-        modifier = Modifier.size(48.dp).padding(PaddingSize*2),
+        modifier = Modifier.size(48.dp).padding(paddingSize*2),
         shape = CircleShape,
         elevation = 2.dp,
     ) {
@@ -122,8 +122,8 @@ fun HamburgerDropDownMenu(
                     if(index == 0){
                         navController.navigate("startView")
                     } else {
-                        navController.navigate("test") //TODO: Route to calibrateView her
-                       // navController.navigate("calibrate")
+                        //navController.navigate("c") //TODO: Route to calibrateView her
+                        navController.navigate("calibrateView")
                     }
                 }) {
                 Text(text = title)
