@@ -2,6 +2,9 @@
     <!-- For application -->
     <string name="app_name">Trafikkskilt</string>
 
+    <!-- General strings-->
+    <string name="done">Ferdig</string>
+
     <!-- Welcome page-->
     <string name="welcome"> Velkommen</string>
 
