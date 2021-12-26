@@ -28,12 +28,17 @@ import com.example.trafikkskilt.constants.menuSize
 @Composable
 fun HeaderComponent(navController: NavController) {
     var expanded by remember { mutableStateOf(false) }
-    val items = listOf("Start drive", "Calibrate camera")
+    val items = listOf(
+        stringResource(id = R.string.header_line_one),
+        stringResource(id = R.string.header_line_two),
+        stringResource(id = R.string.header_line_three))
 
 
     Surface(
         color = colorResource(id = R.color.white).copy(alpha = 0.8f),//Color.Red.copy(alpha = 0.6f),
-        modifier = Modifier.fillMaxSize().height(headerHeight),
+        modifier = Modifier
+            .fillMaxSize()
+            .height(headerHeight),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -73,7 +78,9 @@ fun HeaderComponent(navController: NavController) {
 @Composable
 fun Logo(navController: NavController) {
     Card(
-        modifier = Modifier.size(48.dp).padding(paddingSize*2),
+        modifier = Modifier
+            .size(48.dp)
+            .padding(paddingSize * 2),
         shape = CircleShape,
         elevation = 2.dp,
         onClick = {
@@ -129,7 +136,7 @@ fun HamburgerDropDownMenu(
                     } else if (index == 1) {
                         navController.navigate("calibrateView")
                     } else {
-                        //navController.navigate("infoView") TODO: uncomment
+                        navController.navigate("infoView")
                     }
                 }) {
                 Text(text = title)
