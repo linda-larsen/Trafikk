@@ -1,7 +1,6 @@
 package com.example.trafikkskilt
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -15,7 +14,6 @@ import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.ConfigCameraView
 import com.example.trafikkskilt.models.DrivingView
 import com.example.trafikkskilt.models.StartView
-import org.opencv.android.OpenCVLoader
 import com.example.trafikkskilt.models.TestView
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -40,8 +38,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Main() {
     val navController = rememberNavController()
-    Column() {
-    LazyColumn(){
+    Column{
+    LazyColumn{
         stickyHeader {
             HeaderComponent(navController)
         }

@@ -69,7 +69,7 @@ fun DrivingView(navController: NavController){
         ) {
             Text(
                 text = stringResource(id = R.string.done),
-                fontSize = textSize
+                fontSize = textSize*2
                 )
         }
 
