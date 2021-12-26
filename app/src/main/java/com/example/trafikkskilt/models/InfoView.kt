@@ -95,7 +95,7 @@ fun DoneButton(navController: NavController){
         colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.button_color)),
     ){
         Text(
-            text = stringResource(id = R.string.done),
+            text = stringResource(id = R.string.info_button_text),
             fontSize = textSize,
         )
     }

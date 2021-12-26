@@ -35,4 +35,5 @@
     <string name="info_description_2">1. Kalibrer kameraet.</string>
     <string name="info_description_3">Du finner denne funksjonen i hamburgermenyen oppe til høyre. Sørg for at telefonen er plassert slik at kameraet fanger opp veiskulderen og trafikkskilt. Ikke kalibrer kameraet mens du kjører.</string>
     <string name="info_description_4">2. Gå til startskjermen og start kjøretur</string>
+    <string name="info_button_text">Start kjøretur!</string>
 </resources>

@@ -44,9 +44,9 @@ fun Main() {
             HeaderComponent(navController)
         }
     }
-        NavHost(navController = navController, startDestination = "infoView"){
+        NavHost(navController = navController, startDestination = "startView"){
             composable(route = "startView"){
-                StartView(navController = navController) //TODO: Navcontroller her probs
+                StartView(navController = navController)
             }
 
             //TODO: Remove, just here for testing
