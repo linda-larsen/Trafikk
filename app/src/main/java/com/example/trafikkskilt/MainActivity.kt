@@ -27,19 +27,9 @@ class MainActivity : ComponentActivity() {
     @ExperimentalPermissionsApi
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
-        OpenCVLoader.initDebug()
         super.onCreate(savedInstanceState)
         setContent {
             Main()
-        }
-    }
-
-    external fun stringFromJNI(): String
-
-    //TODO: This crashes the code. This is where u need to start
-    companion object {
-        init {
-            System.loadLibrary("trafikkskilt")
         }
     }
 }
