@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.ConfigCameraView
+import com.example.trafikkskilt.models.DrivingView
 import com.example.trafikkskilt.models.StartView
 import org.opencv.android.OpenCVLoader
 import com.example.trafikkskilt.models.TestView
@@ -22,23 +23,23 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class MainActivity : ComponentActivity() {
 
+    @ExperimentalCoroutinesApi
     @ExperimentalPermissionsApi
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         OpenCVLoader.initDebug()
         super.onCreate(savedInstanceState)
-        Log.i("hore", stringFromJNI().toString())
         setContent {
-
             Main()
         }
     }
 
     external fun stringFromJNI(): String
 
+    //TODO: This crashes the code. This is where u need to start
     companion object {
         init {
-            System.loadLibrary("trafikkskilt");
+            System.loadLibrary("trafikkskilt")
         }
     }
 }
@@ -57,7 +58,7 @@ fun Main() {
     }
         NavHost(navController = navController, startDestination = "startView"){
             composable(route = "startView"){
-                StartView() //TODO: Navcontroller her probs
+                StartView(navController = navController) //TODO: Navcontroller her probs
             }
 
             //TODO: Remove, just here for testing
@@ -67,6 +68,10 @@ fun Main() {
 
             composable(route = "calibrateView"){
                 ConfigCameraView(navController = navController)
+            }
+
+            composable(route = "drivingView"){
+                DrivingView(navController = navController)
             }
         }
     }
