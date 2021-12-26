@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.example.trafikkskilt.R
 import com.example.trafikkskilt.constants.paddingSize
-import com.example.trafikkskilt.constants.headerHeigth
+import com.example.trafikkskilt.constants.headerHeight
 import com.example.trafikkskilt.constants.headerTextSize
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.filled.Menu
@@ -32,7 +32,7 @@ fun HeaderComponent(navController: NavController) {
 
     Surface(
         color = colorResource(id = R.color.white).copy(alpha = 0.8f),//Color.Red.copy(alpha = 0.6f),
-        modifier = Modifier.fillMaxSize().height(headerHeigth),
+        modifier = Modifier.fillMaxSize().height(headerHeight),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

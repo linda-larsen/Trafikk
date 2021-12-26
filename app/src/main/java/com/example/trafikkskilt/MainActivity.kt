@@ -1,7 +1,6 @@
 package com.example.trafikkskilt
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -13,8 +12,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.ConfigCameraView
+import com.example.trafikkskilt.models.DrivingView
 import com.example.trafikkskilt.models.StartView
-import org.opencv.android.OpenCVLoader
 import com.example.trafikkskilt.models.TestView
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -22,6 +21,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class MainActivity : ComponentActivity() {
 
+    @ExperimentalCoroutinesApi
     @ExperimentalPermissionsApi
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,15 +38,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Main() {
     val navController = rememberNavController()
-    Column() {
-    LazyColumn(){
+    Column{
+    LazyColumn{
         stickyHeader {
             HeaderComponent(navController)
         }
     }
         NavHost(navController = navController, startDestination = "startView"){
             composable(route = "startView"){
-                StartView() //TODO: Navcontroller her probs
+                StartView(navController = navController) //TODO: Navcontroller her probs
             }
 
             //TODO: Remove, just here for testing
@@ -56,6 +56,10 @@ fun Main() {
 
             composable(route = "calibrateView"){
                 ConfigCameraView(navController = navController)
+            }
+
+            composable(route = "drivingView"){
+                DrivingView(navController = navController)
             }
         }
     }
