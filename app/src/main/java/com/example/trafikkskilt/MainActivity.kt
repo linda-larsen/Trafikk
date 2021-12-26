@@ -11,10 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
-import com.example.trafikkskilt.models.ConfigCameraView
-import com.example.trafikkskilt.models.DrivingView
-import com.example.trafikkskilt.models.StartView
-import com.example.trafikkskilt.models.TestView
+import com.example.trafikkskilt.models.*
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -44,7 +41,7 @@ fun Main() {
             HeaderComponent(navController)
         }
     }
-        NavHost(navController = navController, startDestination = "startView"){
+        NavHost(navController = navController, startDestination = "infoView"){
             composable(route = "startView"){
                 StartView(navController = navController) //TODO: Navcontroller her probs
             }
@@ -60,6 +57,10 @@ fun Main() {
 
             composable(route = "drivingView"){
                 DrivingView(navController = navController)
+            }
+
+            composable(route = "infoView"){
+                InfoView(navController = navController)
             }
         }
     }

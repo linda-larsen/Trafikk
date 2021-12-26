@@ -24,4 +24,13 @@
 
     <!-- Driving view page -->
     <string name="speedlimit_is">Fartsgrensen er</string>
+
+    <!-- Info page -->
+    <string name="info_headline">Informasjon</string>
+    <string name="info_description_1">Trafikkskilt er en applikasjon som skal registrere trafikkskilt mens du kjører forbi. For å ta i bruk Trafikkskilt må du:</string>
+    <string name="info_description_2">1. Kalibrer kameraet.</string>
+    <string name="info_description_3">Du finner denne funksjonen i hamburgermenyen oppe til høyre. Sørg for at telefonen er plassert slik at kameraet fanger opp veiskulderen og trafikkskilt. Ikke kalibrer kameraet mens du kjører.</string>
+    <string name="info_description_4">2. Gå til startskjermen og start kjøretur</string>
+
+
 </resources>
