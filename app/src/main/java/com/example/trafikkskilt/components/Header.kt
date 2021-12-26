@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.navigation.NavController
 import com.example.trafikkskilt.constants.menuSize
 
+@ExperimentalMaterialApi
 @Composable
 fun HeaderComponent(navController: NavController) {
     var expanded by remember { mutableStateOf(false) }
@@ -39,7 +40,7 @@ fun HeaderComponent(navController: NavController) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             // The logo, viewed to the left
-            Logo()
+            Logo(navController = navController)
 
             //The title, centered
             Text(
@@ -68,12 +69,16 @@ fun HeaderComponent(navController: NavController) {
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
-fun Logo() {
+fun Logo(navController: NavController) {
     Card(
         modifier = Modifier.size(48.dp).padding(paddingSize*2),
         shape = CircleShape,
         elevation = 2.dp,
+        onClick = {
+            navController.navigate("startView")
+        }
     ) {
         Image(
             painterResource(R.drawable.logo),
@@ -103,7 +108,7 @@ fun HamburgerDropDownMenu(
     onDismissMenuView : () -> Unit,
     onMenuItemClick : (Int) -> Unit,
     navController: NavController
-){
+) {
     //The hamburger menu
     HamburgerMenuButton(updateMenuExpandStatus)
 
@@ -118,12 +123,13 @@ fun HamburgerDropDownMenu(
         menuItems.forEachIndexed { index, title ->
             DropdownMenuItem(
                 onClick = {
-                   onMenuItemClick(index)
-                    if(index == 0){
+                    onMenuItemClick(index)
+                    if (index == 0) {
                         navController.navigate("startView")
-                    } else {
-                        //navController.navigate("c") //TODO: Route to calibrateView her
+                    } else if (index == 1) {
                         navController.navigate("calibrateView")
+                    } else {
+                        //navController.navigate("infoView") TODO: uncomment
                     }
                 }) {
                 Text(text = title)
