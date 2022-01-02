@@ -55,7 +55,5 @@ fun ConfigCameraView(navController: NavController){
             CameraView(modifier = Modifier.padding(paddingSize).fillMaxHeight(3f))
 
         }
-
-
     }
 }

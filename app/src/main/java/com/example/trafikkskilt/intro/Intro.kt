@@ -29,8 +29,4 @@ class Intro : AppIntro() {
         super.onDonePressed(currentFragment)
         finish()
     }
-
-
-
-
 }
