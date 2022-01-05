@@ -14,7 +14,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.ConfigCameraView
 import com.example.trafikkskilt.models.StartView
-import org.opencv.android.OpenCVLoader
 import com.example.trafikkskilt.models.TestView
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -59,7 +58,5 @@ fun Main() {
             }
         }
     }
-
-
 }
 
