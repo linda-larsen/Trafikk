@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,11 +17,14 @@ import com.example.trafikkskilt.models.DrivingView
 import com.example.trafikkskilt.models.StartView
 import com.example.trafikkskilt.models.TestView
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 class MainActivity : ComponentActivity() {
 
+    @ExperimentalMaterialApi
     @ExperimentalCoroutinesApi
     @ExperimentalPermissionsApi
     @ExperimentalFoundationApi
@@ -32,19 +36,21 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
 @ExperimentalPermissionsApi
 @ExperimentalFoundationApi
 @Composable
 fun Main() {
     val navController = rememberNavController()
+
     Column{
     LazyColumn{
         stickyHeader {
             HeaderComponent(navController)
         }
     }
-        NavHost(navController = navController, startDestination = "startView"){
+        NavHost(navController = navController, startDestination = "test"){
             composable(route = "startView"){
                 StartView(navController = navController) //TODO: Navcontroller her probs
             }

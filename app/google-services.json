@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "235974093183",
+    "project_id": "trafikkskilt-9eecc",
+    "storage_bucket": "trafikkskilt-9eecc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235974093183:android:935f77c47e191cf1b3d24a",
+        "android_client_info": {
+          "package_name": "com.example.trafikkskilt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235974093183-e7omjsohmh56p0aken7106jib9228o2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnqg2fhFmgKAzidVH4nm4nZ6nDLmX-ELE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235974093183-e7omjsohmh56p0aken7106jib9228o2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
