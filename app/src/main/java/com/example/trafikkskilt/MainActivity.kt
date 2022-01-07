@@ -14,6 +14,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.*
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
@@ -38,13 +40,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Main() {
     val navController = rememberNavController()
+
     Column{
     LazyColumn{
         stickyHeader {
             HeaderComponent(navController)
         }
     }
-        NavHost(navController = navController, startDestination = "startView"){
+        NavHost(navController = navController, startDestination = "test"){
             composable(route = "startView"){
                 StartView(navController = navController)
             }
