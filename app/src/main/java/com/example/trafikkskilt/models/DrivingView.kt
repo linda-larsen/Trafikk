@@ -1,5 +1,8 @@
 package com.example.trafikkskilt.models
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -14,13 +17,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
 import com.example.trafikkskilt.R
 import com.example.trafikkskilt.constants.paddingSize
 import com.example.trafikkskilt.constants.textSize
+import com.google.android.gms.location.FusedLocationProviderClient
 
 @Composable
-fun DrivingView(navController: NavController){
+fun DrivingView(navController: NavController, locationProvider: FusedLocationProviderClient){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
@@ -57,7 +62,7 @@ fun DrivingView(navController: NavController){
 
         Button(
             onClick = {
-            //TODO: Probably something more
+            //TODO: Start camera
             navController.navigate("startView")
             },
             modifier = Modifier
@@ -79,4 +84,34 @@ fun DrivingView(navController: NavController){
 fun speedLimit():String{
     //TODO: This has to render according to speed limit
     return "50"
+}
+
+fun onSpeedLimitChange(speedLimit: Int, locationProvider: FusedLocationProviderClient){
+    //TODO: get latitude and longitude
+
+    locationProvider.lastLocation
+    //TODO: get time
+    //TODO: Check 10 second rule
+    //TODO: Register to db
+
+}
+
+fun locationPermission(context: Context){
+    if (ActivityCompat.checkSelfPermission(
+            context,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+            context,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ) != PackageManager.PERMISSION_GRANTED
+    ) {
+        // TODO: Consider calling
+        //    ActivityCompat#requestPermissions
+        // here to request the missing permissions, and then overriding
+        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+        //                                          int[] grantResults)
+        // to handle the case where the user grants the permission. See the documentation
+        // for ActivityCompat#requestPermissions for more details.
+        return
+    }
 }

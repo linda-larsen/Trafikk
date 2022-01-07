@@ -14,12 +14,15 @@ import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.*
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 class MainActivity : ComponentActivity() {
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     @ExperimentalMaterialApi
     @ExperimentalCoroutinesApi
@@ -27,8 +30,10 @@ class MainActivity : ComponentActivity() {
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
         setContent {
-            Main()
+            Main(fusedLocationClient)
         }
     }
 }
@@ -38,8 +43,9 @@ class MainActivity : ComponentActivity() {
 @ExperimentalPermissionsApi
 @ExperimentalFoundationApi
 @Composable
-fun Main() {
+fun Main(fusedLocationProviderClient: FusedLocationProviderClient) {
     val navController = rememberNavController()
+
 
     Column{
     LazyColumn{
@@ -62,7 +68,7 @@ fun Main() {
             }
 
             composable(route = "drivingView"){
-                DrivingView(navController = navController)
+                DrivingView(navController = navController, locationProvider = fusedLocationProviderClient)
             }
 
             composable(route = "infoView"){
