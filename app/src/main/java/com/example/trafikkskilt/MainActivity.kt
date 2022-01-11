@@ -1,13 +1,17 @@
 package com.example.trafikkskilt
 
+import android.content.Context
+import android.content.ContextWrapper
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -30,10 +34,9 @@ class MainActivity : ComponentActivity() {
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         setContent {
-            Main(fusedLocationClient)
+            Main()
         }
     }
 }
@@ -43,9 +46,8 @@ class MainActivity : ComponentActivity() {
 @ExperimentalPermissionsApi
 @ExperimentalFoundationApi
 @Composable
-fun Main(fusedLocationProviderClient: FusedLocationProviderClient) {
+fun Main() {
     val navController = rememberNavController()
-
 
     Column{
     LazyColumn{
@@ -68,7 +70,7 @@ fun Main(fusedLocationProviderClient: FusedLocationProviderClient) {
             }
 
             composable(route = "drivingView"){
-                DrivingView(navController = navController, locationProvider = fusedLocationProviderClient)
+                DrivingView(navController = navController)
             }
 
             composable(route = "infoView"){
