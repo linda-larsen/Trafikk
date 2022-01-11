@@ -5,7 +5,18 @@ import android.util.Log
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-fun saveToDb(speedLimit: Int, latitude: Double, longitude: Double) {
+/**
+ * Saves to db
+ * Checks if latitude or longitude equals null. Does not save any speedsigns without
+ * coordinates.
+ */
+fun saveToDb(speedLimit: Int, latitude: Double?, longitude: Double?) {
+    //Chekcs if there is registerd cooridnates on the speedsign
+    /*
+    if (latitude == null || longitude == null){
+        return
+    }
+     */
     val sign = hashMapOf(
         "speedlimit" to speedLimit,
          "latitude" to latitude,

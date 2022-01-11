@@ -28,7 +28,10 @@
 
     <!-- Driving view page -->
     <string name="speedlimit_is">Fartsgrensen er</string>
-
+    <string name="allow"> Tillat</string>
+    <string name="dont_allow">Ikke tillat</string>
+    <string name="location_permission_missing">Det er ikke gitt tillatelse til å bruke posisjon. Applikasjonen trenger dette for å registrere fartsskilt. </string>
+    <string name="location_permission">Applikasjonen trenger posisjon for å registrere skilt. Tillat?</string>
     <!-- Info page -->
     <string name="info_headline">Informasjon</string>
     <string name="info_description_1">Trafikkskilt er en applikasjon som skal registrere trafikkskilt mens du kjører forbi. For å ta i bruk Trafikkskilt må du:</string>

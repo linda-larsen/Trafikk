@@ -8,7 +8,7 @@ import com.example.trafikkskilt.saveToDb
 
 @Composable
 fun TestView(){
-    Column() {
+    Column {
         Text("You made it")
         Button(onClick = {
             saveToDb(50, 123.32142, 324331.324)

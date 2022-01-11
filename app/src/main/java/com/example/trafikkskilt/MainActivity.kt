@@ -14,17 +14,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.*
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-
+@ExperimentalPermissionsApi
+@ExperimentalMaterialApi
+@ExperimentalFoundationApi
+@ExperimentalCoroutinesApi
 class MainActivity : ComponentActivity() {
-
-    @ExperimentalMaterialApi
-    @ExperimentalCoroutinesApi
-    @ExperimentalPermissionsApi
-    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -33,9 +29,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
 @ExperimentalPermissionsApi
+@ExperimentalMaterialApi
 @ExperimentalFoundationApi
 @Composable
 fun Main() {
