@@ -21,6 +21,9 @@ import com.example.trafikkskilt.constants.textSize
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+/**
+ * View for configuration of camera
+ */
 
 @ExperimentalCoroutinesApi
 @ExperimentalPermissionsApi

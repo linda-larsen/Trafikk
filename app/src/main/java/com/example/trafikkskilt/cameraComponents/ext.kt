@@ -1,19 +1,15 @@
 package com.example.trafikkskilt.cameraComponents
 
 import android.content.Context
-import android.util.Log
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.ImageCaptureException
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import java.io.File
 import java.util.concurrent.Executor
 import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
+/**
+ * Gets the camera provider in context and runs camera
+ */
 suspend fun Context.getCameraProvider(): ProcessCameraProvider = suspendCoroutine { continuation ->
     ProcessCameraProvider.getInstance(this).also { future ->
         future.addListener(

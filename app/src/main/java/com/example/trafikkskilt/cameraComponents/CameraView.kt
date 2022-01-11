@@ -22,6 +22,10 @@ import com.example.trafikkskilt.util.Permission
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+/**
+ * Camera view
+ * Requests permission if needed and displays camera
+ */
 @ExperimentalPermissionsApi
 @ExperimentalCoroutinesApi
 @Composable

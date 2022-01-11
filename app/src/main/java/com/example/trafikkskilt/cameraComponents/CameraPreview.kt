@@ -8,6 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 
+
+/**
+ * Preview of the camera
+ */
 @Composable
 fun CameraPreview(
     modifier: Modifier = Modifier,
