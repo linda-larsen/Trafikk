@@ -25,7 +25,7 @@ import androidx.navigation.NavController
 import com.example.trafikkskilt.constants.menuSize
 
 /**
- * The Headere component
+ * The Header component
  * @param navController
  */
 @ExperimentalMaterialApi
