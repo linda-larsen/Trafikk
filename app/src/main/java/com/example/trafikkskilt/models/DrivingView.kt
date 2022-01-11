@@ -37,7 +37,7 @@ import androidx.core.content.ContextCompat.getSystemService
 @Composable
 fun DrivingView(navController: NavController){
     val context = LocalContext.current
-    RequirePermission(){
+    RequirePermission{
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize(),
@@ -72,9 +72,8 @@ fun DrivingView(navController: NavController){
                     modifier = Modifier.padding(0.dp, 30.dp, 0.dp, 0.dp)
 
                 )
-                SaveSpeedSignToDbButton( 70, context)
+                SaveSpeedSignToDbButton( 70, context)//TODO: Remove
             }
-            4
             Button(
                 onClick = {
                     navController.navigate("startView")
@@ -133,7 +132,7 @@ fun getLocation(context: Context): Location? {
 
 @ExperimentalPermissionsApi
 @Composable
-fun RequirePermission( content: @Composable() () -> Unit) {
+fun RequirePermission( content: @Composable () -> Unit) {
     var doNotShowRationale by rememberSaveable { mutableStateOf(false) }
     //tracks if the user don't want to see the rationale anymore
     val multiplePermissionsState = rememberMultiplePermissionsState(listOf(Manifest.permission.ACCESS_FINE_LOCATION ,Manifest.permission.ACCESS_FINE_LOCATION))
@@ -142,18 +141,18 @@ fun RequirePermission( content: @Composable() () -> Unit) {
         multiplePermissionsState = multiplePermissionsState,
         permissionsNotGrantedContent = {
             if (doNotShowRationale) {
-                Text("Feature not available")
+                Text(stringResource(id = R.string.location_permission))
             } else {
                 Column {
-                    Text("The camera is important for this app. Please grant the permission.") //TODO: Fix text
+                    Text(stringResource(id = R.string.location_permission))
                     Spacer(modifier = Modifier.height(8.dp))
                     Row {
                         Button(onClick = { multiplePermissionsState.launchMultiplePermissionRequest() }) {
-                            Text("Tillat")
+                            Text(stringResource(id = R.string.allow))
                         }
                         Spacer(Modifier.width(8.dp))
                         Button(onClick = { doNotShowRationale = true }) {
-                            Text("Ikke tillat")
+                            Text(stringResource(id = R.string.dont_allow))
                         }
                     }
                 }
@@ -162,9 +161,7 @@ fun RequirePermission( content: @Composable() () -> Unit) {
         permissionsNotAvailableContent = {
             Column {
                 Text(
-                    "Camera permission denied. See this FAQ with information about why we " +
-                            "need this permission. Please, grant us access on the Settings screen."
-                )
+                    stringResource(id = R.string.location_permission_missing))
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }) {
@@ -180,7 +177,7 @@ fun SaveSpeedSignToDbButton(speedLimit: Int, context: Context){
         if (location != null)
             saveToDb(speedLimit = speedLimit, latitude = location.latitude, longitude = location.longitude)
     }){
-        Text(text = "Save ittt")
+        Text(text = "Save it")
     }
 
     //TODO: Check 10 second rule

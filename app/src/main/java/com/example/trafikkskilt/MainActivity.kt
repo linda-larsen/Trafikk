@@ -1,49 +1,37 @@
 package com.example.trafikkskilt
 
-import android.content.Context
-import android.content.ContextWrapper
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.trafikkskilt.components.HeaderComponent
 import com.example.trafikkskilt.models.*
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-
+@ExperimentalPermissionsApi
+@ExperimentalMaterialApi
+@ExperimentalFoundationApi
+@ExperimentalCoroutinesApi
 class MainActivity : ComponentActivity() {
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-
-    @ExperimentalMaterialApi
-    @ExperimentalCoroutinesApi
-    @ExperimentalPermissionsApi
-    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
             Main()
         }
     }
 }
 
-@ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
 @ExperimentalPermissionsApi
+@ExperimentalMaterialApi
 @ExperimentalFoundationApi
 @Composable
 fun Main() {
