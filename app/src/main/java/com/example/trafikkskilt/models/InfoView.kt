@@ -97,7 +97,7 @@ fun SetUpList(){
 }
 
 /**
- * Done button
+ * Dome button
  */
 @Composable
 fun DoneButton(navController: NavController){

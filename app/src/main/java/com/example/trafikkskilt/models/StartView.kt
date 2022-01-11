@@ -15,6 +15,9 @@ import androidx.navigation.NavController
 import com.example.trafikkskilt.R
 
 
+/**
+ * Start View
+ */
     @Composable
     fun StartView(navController: NavController) {
         Surface(
