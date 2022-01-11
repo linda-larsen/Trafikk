@@ -43,14 +43,9 @@ fun Main() {
             HeaderComponent(navController)
         }
     }
-        NavHost(navController = navController, startDestination = "test"){
+        NavHost(navController = navController, startDestination = "startView"){
             composable(route = "startView"){
                 StartView(navController = navController)
-            }
-
-            //TODO: Remove, just here for testing
-            composable(route = "test"){
-                TestView()
             }
 
             composable(route = "calibrateView"){
