@@ -17,6 +17,8 @@ import com.example.trafikkskilt.R
 
 /**
  * Start View
+ *
+ * @param navController NavController
  */
 @Composable
 fun StartView(navController: NavController) {
@@ -38,7 +40,7 @@ fun StartView(navController: NavController) {
 
             )
             Button(
-                onClick = { navController.navigate("drivingView") },
+                onClick = { navController.navigate("calibrateView") },
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.button_color)),
                 modifier = Modifier
                     .padding(30.dp)

@@ -6,7 +6,7 @@
     <string name="done">Ferdig</string>
 
     <!-- Header -->
-    <string name="header_line_one">Start kjøretur</string>
+    <string name="header_line_one">Hjem</string>
     <string name="header_line_two">Kalibrer kamera</string>
     <string name="header_line_three">Informasjon</string>
 
@@ -22,7 +22,8 @@
          Sørg for at kameraet fanger veiskulderen, \nslik at det kan fange opp skilter.
         \nSett telefonen stabilt. \nIkke konfigurer kameraet mens du kjører.
     </string>
-    <string name="config_camera_done_button">Ferdig!</string>
+    <string name="cancel_camera_config">Avbryt</string>
+    <string name="config_camera_done_button">Start</string>
     <string name="camera_permission">Applikasjonen må ha tilltatelse for å bruke kameraet</string>
     <string name="camera_permission_denied">Du avslo tilalelse til å bruke kameraet. Da får vi ikke konfigurert</string>
     <string name="open_settings">Åpne innstillinger</string>

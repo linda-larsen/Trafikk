@@ -35,6 +35,8 @@ import androidx.core.content.ContextCompat.getSystemService
 
 /**
  * The view that is shown while driving
+ *
+ * @param navController NavController
  */
 
 @ExperimentalPermissionsApi
@@ -72,11 +74,10 @@ fun DrivingView(navController: NavController){
                 )
                 Text(
                     text = speedLimit(),
-                    fontSize = 100.sp,
-                    modifier = Modifier.padding(0.dp, 30.dp, 0.dp, 0.dp)
+                    fontSize = 90.sp,
+                    modifier = Modifier.padding(0.dp, 35.dp, 0.dp, 0.dp)
 
                 )
-                SaveSpeedSignToDbButton(convertSpeedLimitToInt(speedLimit()), context)//TODO: Remove
             }
             Button(
                 onClick = {
@@ -94,6 +95,7 @@ fun DrivingView(navController: NavController){
                     fontSize = textSize*2
                 )
             }
+            SaveSpeedSignToDbButton(convertSpeedLimitToInt(speedLimit()), context)//TODO: Remove
 
         }
     }
@@ -105,7 +107,7 @@ fun DrivingView(navController: NavController){
  */
 fun speedLimit(): String{
     //TODO: This has to render according to speed limit
-    return  "50"
+    return  "110"
 }
 
 /**
@@ -210,7 +212,10 @@ fun SaveSpeedSignToDbButton(speedLimit: Int, context: Context){
         val location = getLocation(context)
         if (location != null)
             saveToDb(speedLimit = speedLimit, latitude = location.latitude, longitude = location.longitude)
-    }){
+        },
+        modifier = Modifier.padding(paddingSize),
+        colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.button_color)),
+    ){
         Text(text = "Save it")
     }
 }
