@@ -40,7 +40,7 @@ fun ConfigCameraView(navController: NavController){
                 textAlign = TextAlign.Center,
             )
             Text(
-                text = stringResource(id = R.string.config_camera_description),
+                text = stringResource(id = R.string.camera_permission),
                 modifier = Modifier.padding(paddingSize),
                 fontSize = textSize,
                 textAlign = TextAlign.Center,
