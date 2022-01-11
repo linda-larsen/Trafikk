@@ -32,7 +32,7 @@ fun CameraView(
     val context = LocalContext.current
     Permission(
         permission = Manifest.permission.CAMERA,
-        rationale = stringResource(id = R.string.config_camera_description),
+        rationale = stringResource(id = R.string.camera_permission),
         permissionNotAvailableContent = {
             Column(modifier) {
                 Text(stringResource(id = R.string.camera_permission_denied))
@@ -53,7 +53,6 @@ fun CameraView(
     ) {
         Box(modifier = modifier) {
             val lifecycleOwner = LocalLifecycleOwner.current
-            val coroutineScope = rememberCoroutineScope()
             var previewUseCase by remember { mutableStateOf<UseCase>(Preview.Builder().build()) }
             Column {
                 CameraPreview(

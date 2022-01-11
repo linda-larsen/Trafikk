@@ -28,30 +28,3 @@ suspend fun Context.getCameraProvider(): ProcessCameraProvider = suspendCoroutin
 val Context.executor: Executor
     get() = ContextCompat.getMainExecutor(this)
 
-suspend fun ImageCapture.takePicture(executor: Executor): File {
-    val photoFile = withContext(Dispatchers.IO) {
-        kotlin.runCatching {
-            File.createTempFile("image", "jpg")
-        }.getOrElse { ex ->
-            Log.e("TakePicture", "Failed to create temporary file", ex)
-            File("/dev/null")
-        }
-    }
-
-    return suspendCoroutine { continuation ->
-        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
-        takePicture(
-            outputOptions, executor,
-            object : ImageCapture.OnImageSavedCallback {
-                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    continuation.resume(photoFile)
-                }
-
-                override fun onError(ex: ImageCaptureException) {
-                    Log.e("TakePicture", "Image capture failed", ex)
-                    continuation.resumeWithException(ex)
-                }
-            }
-        )
-    }
-}
