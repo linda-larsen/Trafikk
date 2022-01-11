@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment
 
+/**
+ * The app introduction
+ * Currently not in use
+ */
 class Intro : AppIntro() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
