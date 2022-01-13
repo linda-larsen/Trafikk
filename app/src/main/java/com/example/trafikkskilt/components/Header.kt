@@ -24,6 +24,10 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.navigation.NavController
 import com.example.trafikkskilt.constants.menuSize
 
+/**
+ * The Header component
+ * @param navController
+ */
 @ExperimentalMaterialApi
 @Composable
 fun HeaderComponent(navController: NavController) {
@@ -35,7 +39,7 @@ fun HeaderComponent(navController: NavController) {
 
 
     Surface(
-        color = colorResource(id = R.color.white).copy(alpha = 0.8f),//Color.Red.copy(alpha = 0.6f),
+        color = colorResource(id = R.color.dark_red).copy(alpha = 0.5f),//Color.Red.copy(alpha = 0.6f),
         modifier = Modifier
             .fillMaxSize()
             .height(headerHeight),
@@ -45,12 +49,20 @@ fun HeaderComponent(navController: NavController) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             // The logo, viewed to the left
-            Logo(navController = navController)
+            Logo(navController = navController,
+                modifier = Modifier
+                    .size(48.dp)
+                    .weight(1f)
+                    .padding(paddingSize * 2)
+            )
 
             //The title, centered
             Text(
                 text = stringResource(id = R.string.app_name),
-                modifier = Modifier.padding(paddingSize*2),
+                modifier = Modifier
+                    .padding(paddingSize*2)
+                    .fillMaxSize()
+                    .weight(5f),
                 fontFamily = FontFamily.Serif,
                 fontSize = headerTextSize,
             )
@@ -74,13 +86,17 @@ fun HeaderComponent(navController: NavController) {
     }
 }
 
+/**
+ * The logo
+ * @param navController
+ * @param modifier
+ */
+
 @ExperimentalMaterialApi
 @Composable
-fun Logo(navController: NavController) {
+fun Logo(navController: NavController, modifier: Modifier) {
     Card(
-        modifier = Modifier
-            .size(48.dp)
-            .padding(paddingSize * 2),
+        modifier = modifier,
         shape = CircleShape,
         elevation = 2.dp,
         onClick = {
@@ -96,17 +112,30 @@ fun Logo(navController: NavController) {
     }
 }
 
+/**
+ * The hamburger menu button
+ * @param updateMenuExpandStatus as Unit
+ */
 @Composable
 fun HamburgerMenuButton(updateMenuExpandStatus : () -> Unit){
     IconButton(
         onClick = {
             updateMenuExpandStatus()        },
-        modifier = Modifier.size(menuSize)
+            modifier = Modifier.size(menuSize)
     ) {
         Icon(Icons.Filled.Menu,"")
     }
 }
 
+/**
+ * The hamburger drop down menu
+ * @param menuItems as List of strings
+ * @param menuExpandedState as boolean
+ * @param updateMenuExpandStatus as Unit
+ * @param onDismissMenuView as Unit
+ * @param onMenuItemClick as Unit
+ * @param navController as NavController
+ */
 @Composable
 fun HamburgerDropDownMenu(
     menuItems: List<String>,

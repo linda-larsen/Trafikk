@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -32,6 +33,11 @@ import com.example.trafikkskilt.saveToDb
 import com.google.accompanist.permissions.*
 import androidx.core.content.ContextCompat.getSystemService
 
+/**
+ * The view that is shown while driving
+ *
+ * @param navController NavController
+ */
 
 @ExperimentalPermissionsApi
 @Composable
@@ -68,11 +74,10 @@ fun DrivingView(navController: NavController){
                 )
                 Text(
                     text = speedLimit(),
-                    fontSize = 100.sp,
-                    modifier = Modifier.padding(0.dp, 30.dp, 0.dp, 0.dp)
+                    fontSize = 90.sp,
+                    modifier = Modifier.padding(0.dp, 35.dp, 0.dp, 0.dp)
 
                 )
-                SaveSpeedSignToDbButton( 70, context)//TODO: Remove
             }
             Button(
                 onClick = {
@@ -90,17 +95,40 @@ fun DrivingView(navController: NavController){
                     fontSize = textSize*2
                 )
             }
+            SaveSpeedSignToDbButton(convertSpeedLimitToInt(speedLimit()), context)//TODO: Remove
 
         }
     }
 
 }
 
-fun speedLimit():String{
+/**
+ * Method for registration of speedlimit
+ */
+fun speedLimit(): String{
     //TODO: This has to render according to speed limit
-    return "50"
+    return  "110"
 }
 
+/**
+ * Converts speed limit from string to int
+ * @param speedLimit as String
+ * @return speed limit as in
+ */
+fun convertSpeedLimitToInt(speedLimit: String): Int{
+    try {
+        return speedLimit.toInt()
+    } catch (nfe: NumberFormatException) {
+        Log.e("Speed limit not casted", "Failed to cast speed limit to int")
+    }
+    return 0
+}
+
+/**
+ * Gets the location of the phone
+ * @param context the context
+ * @return the location
+ */
 fun getLocation(context: Context): Location? {
     val locationManager = getSystemService(context, LocationManager::class.java) as LocationManager
     val hasGps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
@@ -130,6 +158,9 @@ fun getLocation(context: Context): Location? {
     return location
 }
 
+/**
+ * Requiers permission to acsess location data if nedded
+ */
 @ExperimentalPermissionsApi
 @Composable
 fun RequirePermission( content: @Composable () -> Unit) {
@@ -169,6 +200,11 @@ fun RequirePermission( content: @Composable () -> Unit) {
     }
 }
 
+/**
+ * Saves speed sign to database
+ * @param speedLimit as Int
+ * @param context as Context
+ */
 @ExperimentalPermissionsApi
 @Composable
 fun SaveSpeedSignToDbButton(speedLimit: Int, context: Context){
@@ -176,9 +212,10 @@ fun SaveSpeedSignToDbButton(speedLimit: Int, context: Context){
         val location = getLocation(context)
         if (location != null)
             saveToDb(speedLimit = speedLimit, latitude = location.latitude, longitude = location.longitude)
-    }){
+        },
+        modifier = Modifier.padding(paddingSize),
+        colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.button_color)),
+    ){
         Text(text = "Save it")
     }
-
-    //TODO: Check 10 second rule
 }

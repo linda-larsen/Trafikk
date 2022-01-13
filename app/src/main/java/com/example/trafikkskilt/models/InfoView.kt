@@ -20,6 +20,9 @@ import com.example.trafikkskilt.constants.headerTextSize
 import com.example.trafikkskilt.constants.paddingSize
 import com.example.trafikkskilt.constants.textSize
 
+/**
+ * Info View displays info about the application
+ */
 @Composable
 fun InfoView(navController: NavController){
     Column(
@@ -32,6 +35,9 @@ fun InfoView(navController: NavController){
     }
 }
 
+/**
+ * Shows the head line
+ */
 @Composable
 fun HeadLine(){
     Text(
@@ -47,6 +53,9 @@ fun HeadLine(){
     Spacer(modifier = Modifier.padding(paddingSize))
 }
 
+/**
+ * Shows the general info
+ */
 @Composable
 fun GeneralInfo(){
     Text(
@@ -58,6 +67,9 @@ fun GeneralInfo(){
     Spacer(modifier = Modifier.padding(paddingSize))
 }
 
+/**
+ * Displays the list for set up
+ */
 @Composable
 fun SetUpList(){
     //Bullet pont one
@@ -84,6 +96,9 @@ fun SetUpList(){
         )
 }
 
+/**
+ * Dome button
+ */
 @Composable
 fun DoneButton(navController: NavController){
     Spacer(modifier = Modifier.padding(100.dp))
